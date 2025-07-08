@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Milesverse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+  <a href="index.html" class="logo">Senator Eniola</a>
+  <div class="date-time" id="datetime"></div>
+  <div class="nav">
+    <a href="about.html">about</a>
+    <a href="projects.html">projects preview</a>
+    <a href="experience.html">experience</a>
+    <a href="Resume.pdf">resume</a>
+    <a href="contact.html">contact</a>
+  </div>
+  <div class="socials">
+    <a href="https://github.com/milesverse" target="_blank"><img src="/images/github.png" alt="GitHub"></a>
+    <a href="https://linkedin.com/in/senatorolorunnisola" target="_blank"><img src="/images/linkedin.png" alt="LinkedIn"></a>
+    <a href="https://twitter.com/0xmilesz" target="_blank"><img src="/images/twitter.png" alt="Twitter"></a>
+    <a href="https://medium.com/@senatoreniola" target="_blank"><img src="/images/medium.png" alt="Medium"></a>
+  </div>
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('en-US');
+      const timeStr = now.toLocaleTimeString('en-US');
+      document.getElementById('datetime').innerText = `${dateStr} ${timeStr} WAT`;
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+
+    if (!sessionStorage.getItem("visited")) {
+      sessionStorage.setItem("visited", "true");
+      window.location.href = "intro.html";
+    }
+
+  </script>
+</body>
+</html>
