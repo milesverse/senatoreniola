@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Senator Eniola</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Courier Prime', monospace;
+      background-color: white;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    .logo {
+      background-color: red;
+      color: white;
+      padding: 0.3em 1em;
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-bottom: 1em;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .datetime {
+      margin-bottom: 2rem;
+      font-size: 0.9em;
+    }
+    form {
+      max-width: 700px;
+      width: 100%;
+      display: grid;
+      gap: 1rem;
+    }
+    .row {
+      display: flex;
+      gap: 1rem;
+    }
+    .row > input {
+      flex: 1;
+    }
+    input, select, textarea {
+      font-family: 'Courier Prime', monospace;
+      font-size: 1em;
+      padding: 0.75em;
+      border: 1px solid #ccc;
+      width: 100%;
+    }
+    textarea {
+      height: 150px;
+      resize: none;
+    }
+    button {
+      background-color: red;
+      color: white;
+      padding: 0.75em 1.5em;
+      border: none;
+      font-family: 'Courier Prime', monospace;
+      cursor: pointer;
+      text-transform: lowercase;
+      width: fit-content;
+    }
+    .footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.9em;
+    }
+    .footer a {
+      color: black;
+      text-decoration: none;
+      margin: 0 0.5em;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="logo">Senator Eniola</a>
+  <div class="datetime" id="datetime"></div>
+
+  <<form id="contactForm">
+  <label>Contact Me</label>
+  <div class="row">
+    <input type="text" name="first_name" placeholder="first name" required />
+    <input type="text" name="last_name" placeholder="last name" required />
+  </div>
+  <div class="row">
+    <input type="email" name="email" placeholder="your email" required />
+    <input type="text" name="reference" placeholder="project reference (optional)" />
+  </div>
+  <select name="inquiry_type">
+    <option value="general">general inquiry</option>
+    <option value="collaboration">project collaboration</option>
+    <option value="freelance">freelance/contract</option>
+    <option value="event">speaking/event</option>
+  </select>
+  <textarea name="message" placeholder="message" required></textarea>
+  <button type="submit">send</button>
+  <p id="form-status" style="margin-top: 1rem;"></p>
+</form>
+
+
+
+  <div class="footer">
+    <a href="index.html">home</a> ·
+    <a href="about.html">about</a> ·
+    <a href="projects.html">projects</a> ·
+    <a href="experience.html">experience</a> .
+    <a href="Resume.pdf">resume</a> .
+    <a href="contact.html">contact</a>
+  </div>
+
+  <script>
+  const now = new Date();
+  document.getElementById('datetime').innerText =
+    now.toLocaleDateString('en-US') + ' ' + now.toLocaleTimeString('en-US') + ' WAT';
+
+  const form = document.getElementById("contactForm");
+  const status = document.getElementById("form-status");
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    const data = new FormData(form);
+    const response = await fetch("https://formspree.io/f/mkgblpwv", {
+      method: "POST",
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      form.reset();
+      status.innerText = "✅ Message sent! I’ll get back to you soon.";
+      status.style.color = "green";
+    } else {
+      status.innerText = "❌ Something went wrong. Please try again.";
+      status.style.color = "red";
+    }
+  });
+</script>
+
+</body>
+</html>
+

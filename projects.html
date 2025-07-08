@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - Senator Eniola</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Courier Prime', monospace;
+      background-color: white;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    .logo {
+      background-color: red;
+      color: white;
+      padding: 0.3em 1em;
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-bottom: 1em;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .datetime {
+      margin-bottom: 2rem;
+      font-size: 0.9em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      width: 100%;
+      max-width: 1100px;
+    }
+    .project-tile {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .project-tile img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      filter: brightness(0.5);
+      transition: filter 0.3s;
+    }
+    .project-tile:hover img {
+      filter: brightness(0.8);
+    }
+    .project-tile span {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: white;
+      color: black;
+      padding: 2px 6px;
+      font-size: 0.85em;
+    }
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 2rem;
+    }
+    .modal-content {
+      background: white;
+      color: black;
+      max-width: 1000px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .modal-content img,
+    .modal-content video {
+      width: 100%;
+      height: auto;
+    }
+    .modal-content .info {
+      font-size: 0.9em;
+    }
+    .close {
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.9em;
+    }
+    .footer a {
+      color: black;
+      text-decoration: none;
+      margin: 0 0.5em;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .modal-content {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="logo">Senator Eniola</a>
+  <div class="datetime" id="datetime"></div>
+
+  <div class="grid">
+    <!-- 12 demo projects -->
+    <div class="project-tile" onclick="openModal(0)"><img src="/images/Project1.png"><span>Task Management Web App</span></div>
+    <div class="project-tile" onclick="openModal(1)"><img src="/images/Project2.png"><span>Portfolio Website</span></div>
+    <div class="project-tile" onclick="openModal(2)"><img src="/images/Project3.png"><span>Audio Book PDF Reader</span></div>
+    <!-- <div class="project-tile" onclick="openModal(3)"><img src="project4.png"><span>Project 4</span></div> -->
+    <!-- <div class="project-tile" onclick="openModal(4)"><img src="project5.png"><span>Project 5</span></div> -->
+    <!-- <div class="project-tile" onclick="openModal(5)"><img src="project6.png"><span>Project 6</span></div> -->
+    <!-- <div class="project-tile" onclick="openModal(6)"><img src="project7.png"><span>Project 7</span></div> -->
+    <!-- <div class="project-tile" onclick="openModal(7)"><img src="project8.png"><span>Project 8</span></div> -->
+    <!-- <div class="project-tile" onclick="openModal(8)"><img src="project9.png"><span>Project 9</span></div> -->
+    <!-- <div class="project-tile" onclick="openModal(9)"><img src="project10.png"><span>Project 10</span></div> -->
+    <!-- <div class="project-tile" onclick="openModal(10)"><img src="project11.png"><span>Project 11</span></div> -->
+    <!-- <div class="project-tile" onclick="openModal(11)"><img src="project12.png"><span>Project 12</span></div> -->
+  </div>
+
+  <div class="modal" id="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+
+  <div class="footer">
+    <a href="index.html">home</a> ·
+    <a href="about.html">about</a> ·
+    <a href="projects.html">projects</a> ·
+    <a href="experience.html">experience</a> .
+    <a href="Resume.pdf">resume</a> .
+    <a href="contact.html">contact</a> 
+  </div>
+
+  <script>
+    const now = new Date();
+    document.getElementById('datetime').innerText =
+      now.toLocaleDateString('en-US') + ' ' + now.toLocaleTimeString('en-US') + ' WAT';
+
+    const projects = [
+      { title: "Task Management Web App", desc: "Built a responsive task management web application using React.js, Node.js, Express.js, and MongoDB. Deployed on Heroku with continuous integration using GitHub.", image: "/images/Project1.png" },
+      { title: "Portfolio Website", desc: "Developed a responsive personal portfolio website using HTML, CSS, and JavaScript to showcase projects and skills. Integrated GitHub and LinkedIn links and optimized for mobile devices.", image: "/images/Project2.png" },
+      { title: "Audio Book PDF Reader", desc: "a simple Python application that converts PDF files into speech using text-to-speech (TTS) technology. It uses tkinter for file selection, PyPDF2 for PDF reading, and pyttsx3 for offline TTS.", image: "/images/Project3.png" },
+      { title: "NFT Drop Site", desc: "React landing page for NFT mints.", image: "project4.png" },
+      { title: "Cloud Portfolio", desc: "Static site deployed via AWS & Netlify.", image: "project5.png" },
+      { title: "Mobile UI Clone", desc: "Rebuilt Netflix UI in Flutter.", image: "project6.png" },
+      { title: "DeFi Tracker", desc: "App to track airdrops & DeFi wallets.", image: "project7.png" },
+      { title: "Figma to Web", desc: "Pixel-perfect clone from Figma file.", image: "project8.png" },
+      { title: "Crypto Blog", desc: "Markdown blog with Web3 integrations.", image: "project9.png" },
+      { title: "Design System", desc: "Reusable UI kit with Tailwind.", image: "project10.png" },
+      { title: "Stream Overlay", desc: "Twitch overlay built with OBS HTML.", image: "project11.png" },
+      { title: "3D Portfolio", desc: "Three.js based animated portfolio.", image: "project12.png" }
+    ];
+
+    function openModal(index) {
+      const project = projects[index];
+      const modal = document.getElementById("modal");
+      const content = document.getElementById("modalContent");
+      content.innerHTML = `
+        <img src="${project.image}" alt="${project.title}" />
+        <div class="info">
+          <h3>${project.title}</h3>
+          <p>${project.desc}</p>
+          <p>More info coming soon...</p>
+        </div>
+      `;
+      modal.style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
