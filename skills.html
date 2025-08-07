@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skills - Senator Eniola</title>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: white;
+      color: black;
+      font-family: 'Courier Prime', monospace;
+      margin: 0;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      background-color: red;
+      color: white;
+      padding: 0.3em 1em;
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-bottom: 1em;
+      text-decoration: none;
+    }
+
+    .skills-section {
+      max-width: 800px;
+      width: 100%;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+    }
+
+    .category {
+      margin-bottom: 1.5rem;
+    }
+
+    .category strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 1.1em;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 1.5rem;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.9em;
+    }
+
+    .footer a {
+      color: black;
+      text-decoration: none;
+      margin: 0 0.5em;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <a href="home.html" class="logo">Senator Eniola</a>
+  <div class="datetime" id="datetime"></div>
+
+  <div class="skills-section">
+    <h2>Skills</h2>
+    <div class="category">
+      <strong>Programming Languages:</strong>
+      <ul>
+        <li>Python</li>
+        <li>JavaScript</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Bash</li>
+      </ul>
+    </div>
+
+    <div class="category">
+      <strong>Frontend:</strong>
+      <ul>
+        <li>React.js</li>
+        <li>Tailwind CSS</li>
+      </ul>
+    </div>
+
+    <div class="category">
+      <strong>Backend:</strong>
+      <ul>
+        <li>Node.js</li>
+        <li>Express.js</li>
+        <li>WordPress</li>
+      </ul>
+    </div>
+
+    <div class="category">
+      <strong>Database:</strong>
+      <ul>
+        <li>MongoDB</li>
+        <li>SQL</li>
+        <li>REST APIs</li>
+      </ul>
+    </div>
+
+    <div class="category">
+      <strong>Tools & DevOps:</strong>
+      <ul>
+        <li>Git</li>
+        <li>GitHub</li>
+        <li>VS Code</li>
+        <li>Postman</li>
+        <li>n8n</li>
+        <li>Heroku</li>
+        <li>Netlify</li>
+      </ul>
+    </div>
+
+    <div class="category">
+      <strong>Other Skills:</strong>
+      <ul>
+        <li>UI/UX Design</li>
+        <li>Canva</li>
+        <li>Social Media Content</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="home.html">home</a> ·
+    <a href="about.html">about</a> ·
+    <a href="projects.html">projects</a> ·
+    <a href="experience.html">experience</a> ·
+    <a href="resume.pdf">resume</a> ·
+    <a href="contact.html">contact</a>
+  </div>
+  <script>
+    const now = new Date();
+    document.getElementById("datetime").innerText =
+      now.toLocaleDateString('en-US') + ' ' + now.toLocaleTimeString('en-US') + ' WAT';
+  </script>
+</body>
+</html>
